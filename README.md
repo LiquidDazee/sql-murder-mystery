@@ -80,7 +80,7 @@ Result:
 ```SQL
 INSERT INTO solution VALUES (1, 'Jeremy Bowers')
 SELECT value
-FROM solution
+FROM solution;
 ```
 Result:
 | value |
@@ -113,7 +113,7 @@ Result:
 8. Check solution:
 ```SQL
 INSERT INTO solution VALUES (1, 'Miranda Priestly')
-SELECT value FROM solution
+SELECT value FROM solution;
 ```
 Result:
 | value |
