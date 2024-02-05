@@ -71,7 +71,8 @@ where check_in_date = 20180109 and membership_id like '48Z%';
   "name": "Jeremy Bowers"
 }*/
 
-select p.name, d.* from person p right JOIN drivers_license d on p.license_id = d.id where d.plate_number like '%H42W%';
+select p.name, d.* from person p right JOIN drivers_license d on p.license_id = d.id 
+where d.plate_number like '%H42W%';
 
 -- This returns Jeremy Bowers, Maxine Whitely and Tushar Chandra, of which only Jeremy Bowers was at the gym when Annabel mentioned
 
@@ -86,7 +87,8 @@ If you feel especially confident in your SQL skills, try to complete this final 
 Use this same INSERT statement with your new suspect to check your answer.
 */
 
-select p.name, i.transcript from person p join interview i on p.id = i.person_id where p.name = 'Jeremy Bowers';
+select p.name, i.transcript from person p join interview i on p.id = i.person_id 
+where p.name = 'Jeremy Bowers';
 
 /*
 {
@@ -96,7 +98,9 @@ select p.name, i.transcript from person p join interview i on p.id = i.person_id
 }
 */
 
-select p.name, d.car_make, d.car_model, d.height, d.hair_color, f.event_name, i.annual_income from person p join drivers_license d on p.license_id = d.id join facebook_event_checkin f on f.person_id=p.id join income i on p.ssn = i.ssn
+select p.name, d.car_make, d.car_model, d.height, d.hair_color, f.event_name, i.annual_income from person p 
+join drivers_license d on p.license_id = d.id join facebook_event_checkin f on f.person_id=p.id 
+join income i on p.ssn = i.ssn
 where d.car_make = 'Tesla' and f.event_name like '%SQL%';
 
 -- Miranda Priestly

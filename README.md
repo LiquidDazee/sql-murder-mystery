@@ -7,7 +7,8 @@ A crime has taken place and the detective needs your help. The detective gave yo
 1. Search for information about a murder on 15 January 2018:
 
 ```SQL
-select * from crime_scene_report where city = 'SQL City' and date = 20180115 and type='murder';
+select * from crime_scene_report 
+where city = 'SQL City' and date = 20180115 and type='murder';
 ```
 Result:
 | Date       | Type   | Description                                                           | City      |
@@ -18,7 +19,8 @@ Result:
 
 The first witness:
 ```SQL
-select * from person where address_street_name = 'Northwestern Dr' order by address_number desc LIMIT 1;
+select * from person 
+where address_street_name = 'Northwestern Dr' order by address_number desc LIMIT 1;
 ```
 Result:
 | ID    | Name           | License ID | Address Number | Address Street Name | SSN        |
@@ -27,7 +29,8 @@ Result:
 
 The second witness:
 ```SQL
-select * from person where address_street_name = 'Franklin Ave' and name like 'Annabel%';
+select * from person 
+where address_street_name = 'Franklin Ave' and name like 'Annabel%';
 ```
 Result:
 | ID    | Name           | License ID | Address Number | Address Street Name | SSN        |
@@ -38,7 +41,8 @@ Result:
 3. Witnesses - interview:
 
 ```SQL
-select p.name, i.transcript from interview i join person p on i.person_id = p.id
+select p.name, i.transcript from interview i 
+join person p on i.person_id = p.id
 where person_id = 14887 or person_id = 16371;
 ```
 Result:
@@ -50,7 +54,8 @@ Result:
 4. Check details given from interviews:
 
 ```SQL
-select g.*, m.name from get_fit_now_check_in g join get_fit_now_member m on  g.membership_id = m.id
+select g.*, m.name from get_fit_now_check_in g 
+join get_fit_now_member m on  g.membership_id = m.id
 where check_in_date = 20180109 and membership_id like '48Z%';
 ```
 Result:
@@ -60,7 +65,9 @@ Result:
 | 48Z55         | 20180109      | 1530          | 1700           | Jeremy Bowers   |
 
 ```SQL
-select p.name, d.* from person p right JOIN drivers_license d on p.license_id = d.id where d.plate_number like '%H42W%';
+select p.name, d.* from person p 
+right JOIN drivers_license d on p.license_id = d.id 
+where d.plate_number like '%H42W%';
 ```
 Result:
 | Name             | ID     | Age | Height | Eye Color | Hair Color | Gender | Plate Number | Car Make   | Car Model    |
@@ -82,7 +89,9 @@ Result:
 
 6. Murderer Interview:
 ```SQL
-select p.name, i.transcript from person p join interview i on p.id = i.person_id where p.name = 'Jeremy Bowers';
+select p.name, i.transcript from person p 
+join interview i on p.id = i.person_id 
+where p.name = 'Jeremy Bowers';
 ```
 Result:
 | Name             | Transcript                                                                                                                                          |
@@ -91,7 +100,9 @@ Result:
 
 7. Check woman
 ```SQL
-select p.name, d.car_make, d.car_model, d.height, d.hair_color, f.event_name, i.annual_income from person p join drivers_license d on p.license_id = d.id join facebook_event_checkin f on f.person_id=p.id join income i on p.ssn = i.ssn
+select p.name, d.car_make, d.car_model, d.height, d.hair_color, f.event_name, i.annual_income from person p 
+join drivers_license d on p.license_id = d.id join facebook_event_checkin f on f.person_id=p.id 
+join income i on p.ssn = i.ssn
 where d.car_make = 'Tesla' and f.event_name like '%SQL%';
 ```
 Result:
